@@ -1,29 +1,37 @@
 """
-Match Context Package
+Match Context Features Package
 
-Features that describe the context and circumstances of a match.
+Contains match-specific contextual features:
+- Head-to-head history (H2H record between teams)
+- Match importance (league position stakes)
+- Rivalry detection (derby matches, historic rivalries)
+- Season timing (early/mid/late season, fixture congestion)
 
-Why context matters:
-- Derbies are unpredictable (form doesn't matter)
-- High-stakes matches are more defensive
-- Teams fighting relegation play differently
-- Season timing affects tactics and motivation
+These features provide context about the specific matchup
+beyond just the teams' current form and strength.
 
-Modules:
-    - importance: Match importance score (title race, survival, etc.)
-    - rivalry: Derby detection and rivalry factors
-    - head_to_head: Historical matchups between teams
-    - season_timing: Fixture congestion, season stage
+Usage:
+    from src.features.match_context import (
+        HeadToHeadAnalyser,
+        ImportanceCalculator,
+        RivalryDetector,
+        SeasonTimingAnalyser
+    )
+    
+    h2h = HeadToHeadAnalyser()
+    importance = ImportanceCalculator()
+    rivalry = RivalryDetector()
+    timing = SeasonTimingAnalyser()
 """
 
+from .head_to_head import HeadToHeadAnalyser
 from .importance import MatchImportanceCalculator
 from .rivalry import RivalryDetector
-from .head_to_head import HeadToHeadAnalyser
 from .season_timing import SeasonTimingAnalyser
 
 __all__ = [
-    'MatchImportanceCalculator',
-    'RivalryDetector',
     'HeadToHeadAnalyser',
-    'SeasonTimingAnalyser'
+    'ImportanceCalculator',
+    'RivalryDetector',
+    'SeasonTimingAnalyser',
 ]
