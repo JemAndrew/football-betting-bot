@@ -164,6 +164,32 @@ def parse_date(date_str: str) -> datetime:
     raise ValueError(f"Could not parse date string: {date_str}")
 
 
+def parse_iso_date(date_str: str) -> datetime:
+    """
+    Parse ISO 8601 date string (used by most APIs).
+    
+    Args:
+        date_str: ISO 8601 formatted date string
+    
+    Returns:
+        datetime object
+    
+    Example:
+        >>> parse_iso_date("2024-01-15T15:00:00Z")
+        datetime(2024, 1, 15, 15, 0, 0)
+    """
+    # Handle ISO format with timezone
+    if date_str.endswith('Z'):
+        date_str = date_str[:-1] + '+00:00'
+    
+    try:
+        # Python 3.7+ has fromisoformat
+        return datetime.fromisoformat(date_str.replace('Z', '+00:00'))
+    except ValueError:
+        # Fallback to manual parsing
+        return parse_date(date_str)
+
+
 def days_between(date1: Union[str, datetime], date2: Union[str, datetime]) -> int:
     """
     Calculate days between two dates.
