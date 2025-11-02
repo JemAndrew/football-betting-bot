@@ -130,9 +130,7 @@ models/checkpoints/**/*
 *.pth
 *.pt
 
-# Model metadata (optional - might want to version this)
-# models/model_metadata/**/*
-# !models/model_metadata/.gitkeep
+
 
 # ============================================
 # LOGS (Don't version log files)
