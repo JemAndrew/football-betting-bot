@@ -1,21 +1,30 @@
 """
 Core Features Package
 
-Essential features that are always enabled.
-These are the foundation of match prediction.
+Contains fundamental team-level features:
+- ELO ratings (team strength)
+- Recent form (last 5-10 games performance)
+- Team statistics (attack/defence strength, goals)
 
-Modules:
-    - team_strength: ELO ratings and power metrics
-    - recent_form: Last 5-10 games performance
-    - team_statistics: Attack/defence stats, goals, clean sheets
+These features are calculated per team and represent their
+current playing ability and form.
+
+Usage:
+    from src.features.core import ELOCalculator, FormCalculator, TeamStatisticsCalculator
+    
+    elo = ELOCalculator()
+    form = FormCalculator()
+    stats = TeamStatisticsCalculator()
 """
 
-from .team_strength import TeamStrengthCalculator
-from .recent_form import RecentFormCalculator
+from .elo_calculator import ELOCalculator
+from .form_calculator import FormCalculator
+from .team_features import TeamFeatures
 from .team_statistics import TeamStatisticsCalculator
 
 __all__ = [
-    'TeamStrengthCalculator',
-    'RecentFormCalculator',
-    'TeamStatisticsCalculator'
+    'ELOCalculator',
+    'FormCalculator',
+    'TeamFeatures',
+    'TeamStatisticsCalculator',
 ]
