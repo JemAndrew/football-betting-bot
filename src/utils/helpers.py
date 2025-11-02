@@ -117,12 +117,14 @@ def format_date(date: Union[str, datetime], format_str: str = "%Y-%m-%d") -> str
     Format a date consistently.
     
     Args:
-        date: Date as string or datetime object
+        date: Date as string, datetime, or date object
         format_str: Desired output format
     
     Returns:
         Formatted date string
     """
+    from datetime import date as date_type
+    
     if isinstance(date, str):
         # Try parsing common formats
         for fmt in ["%Y-%m-%d", "%d/%m/%Y", "%Y-%m-%dT%H:%M:%SZ"]:
@@ -132,11 +134,10 @@ def format_date(date: Union[str, datetime], format_str: str = "%Y-%m-%d") -> str
             except ValueError:
                 continue
     
-    if isinstance(date, datetime):
+    if isinstance(date, (datetime, date_type)):
         return date.strftime(format_str)
     
     raise ValueError(f"Could not parse date: {date}")
-
 
 def parse_date(date_str: str) -> datetime:
     """

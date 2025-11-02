@@ -67,33 +67,29 @@ def validate_probability(prob: float) -> bool:
     return True
 
 
-def validate_score(score: int, max_score: int = 20) -> bool:
+def validate_score(score: Optional[int], max_score: int = 20) -> None:
     """
-    Validate that a match score is reasonable.
+    Validate a match score.
     
     Args:
-        score: Score to validate
+        score: Score value (can be None for unavailable data)
         max_score: Maximum reasonable score
-    
-    Returns:
-        True if valid
     
     Raises:
         ValidationError: If score is invalid
     """
+    # None is valid - data might not be available
+    if score is None:
+        return
+    
     if not isinstance(score, int):
         raise ValidationError(f"Score must be an integer, got {type(score)}")
     
     if score < 0:
-        raise ValidationError(f"Score cannot be negative: {score}")
+        raise ValidationError(f"Score cannot be negative, got {score}")
     
     if score > max_score:
-        raise ValidationError(
-            f"Score {score} exceeds maximum {max_score} - possible data error"
-        )
-    
-    return True
-
+        raise ValidationError(f"Score suspiciously high: {score} (max: {max_score})")
 
 def validate_date(
     date: Any,
