@@ -1,0 +1,330 @@
+powershell# Create comprehensive .gitignore
+@"
+# ============================================
+# SECRETS & API KEYS (CRITICAL - NEVER COMMIT)
+# ============================================
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+*.pfx
+config/secrets.yaml
+config/api_keys.yaml
+config/*_secret*.yaml
+secrets/
+credentials/
+api_keys.txt
+
+# Betfair certificates and login details
+betfair_certs/
+*.crt
+*.cert
+
+# ============================================
+# PYTHON
+# ============================================
+# Byte-compiled / optimised / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+virtualenv/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+pytestdebug.log
+
+# ============================================
+# DATA FILES (Large files that shouldn't be versioned)
+# ============================================
+# Raw data from APIs
+data/raw/**/*
+!data/raw/.gitkeep
+!data/raw/README.md
+
+# Processed data
+data/processed/**/*
+!data/processed/.gitkeep
+!data/processed/README.md
+
+# Historical data
+data/historical/**/*
+!data/historical/.gitkeep
+!data/historical/README.md
+
+# Cache
+data/cache/**/*
+!data/cache/.gitkeep
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Large CSV/Excel files
+*.csv
+*.xlsx
+*.xls
+!data/sample_data.csv  # Except small sample files
+
+# Pickle files (can be large)
+*.pkl
+*.pickle
+
+# ============================================
+# MODELS (Trained models can be very large)
+# ============================================
+models/saved_models/**/*
+!models/saved_models/.gitkeep
+!models/saved_models/README.md
+
+# Model checkpoints
+models/checkpoints/**/*
+*.h5
+*.hdf5
+*.ckpt
+*.pth
+*.pt
+
+# Model metadata (optional - might want to version this)
+# models/model_metadata/**/*
+# !models/model_metadata/.gitkeep
+
+# ============================================
+# LOGS (Don't version log files)
+# ============================================
+logs/**/*
+!logs/.gitkeep
+!logs/README.md
+*.log
+*.log.*
+*.log.gz
+log/
+
+# Specific log types
+logs/api_logs/**/*
+logs/betting_logs/**/*
+logs/error_logs/**/*
+logs/performance_logs/**/*
+
+# ============================================
+# JUPYTER NOTEBOOKS
+# ============================================
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Jupyter output (optional - comment out if you want to keep outputs)
+notebooks/**/*.ipynb
+!notebooks/examples/*.ipynb  # Keep example notebooks
+
+# IPython
+profile_default/
+ipython_config.py
+
+# ============================================
+# IDE & EDITORS
+# ============================================
+# VSCode
+.vscode/
+.vscode/*
+!.vscode/settings.json.example
+!.vscode/launch.json.example
+*.code-workspace
+
+# PyCharm
+.idea/
+.idea/*
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+# ============================================
+# OPERATING SYSTEM
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.directory
+.Trash-*
+
+# ============================================
+# DOCKER
+# ============================================
+docker-compose.override.yml
+.dockerignore
+
+# ============================================
+# BACKUPS
+# ============================================
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+*.temp
+~*
+
+# Database backups
+backups/
+*.sql
+*.dump
+
+# ============================================
+# BETTING SPECIFIC
+# ============================================
+# Betting history (sensitive financial data)
+betting_history/
+bet_records.csv
+transactions/
+bankroll_history/
+
+# Odds data (can be large and frequently updated)
+odds_archive/
+live_odds/
+
+# Scraped data
+scraped_data/
+scraper_cache/
+
+# Personal betting accounts info
+accounts.json
+bookmaker_credentials.yaml
+
+# ============================================
+# DOCUMENTATION BUILD
+# ============================================
+docs/_build/
+docs/_static/
+docs/_templates/
+site/
+
+# Sphinx
+docs/build/
+docs/auto_examples/
+
+# ============================================
+# MISCELLANEOUS
+# ============================================
+# Compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Development notes
+TODO.txt
+NOTES.txt
+dev_notes/
+
+# Configuration overrides (local development)
+config/local_config.yaml
+config/dev_config.yaml
+config/*_local.yaml
+
+# Performance profiling
+*.prof
+*.lprof
+profile_results/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytype
+.pytype/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath
+*.sage.py
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# mkdocs
+/site
