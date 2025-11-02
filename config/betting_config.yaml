@@ -1,0 +1,73 @@
+# Betting Configuration
+# Risk management and betting strategy parameters
+
+bankroll:
+  initial: 1000.0  # Starting bankroll in GBP
+  currency: "GBP"
+  min_bankroll: 500.0  # Stop betting if bankroll falls below this
+
+stake_sizing:
+  method: "kelly"  # Options: "kelly", "fixed", "percentage"
+  kelly_fraction: 0.25  # Quarter Kelly for safety
+  fixed_stake: 10.0  # Used if method is "fixed"
+  percentage_stake: 0.02  # Used if method is "percentage" (2% of bankroll)
+  min_stake: 5.0  # Minimum bet size
+  max_stake: 50.0  # Maximum bet size
+  max_stake_pct: 0.05  # Max 5% of bankroll per bet
+
+risk_limits:
+  max_daily_loss: 0.10  # Stop if down 10% in a day
+  max_weekly_loss: 0.20  # Stop if down 20% in a week
+  max_concurrent_bets: 5  # Maximum number of open bets
+  max_exposure_per_match: 0.08  # Max 8% of bankroll on one match
+
+value_betting:
+  min_edge: 0.05  # Minimum 5% edge required
+  min_probability: 0.20  # Don't bet on outcomes <20% likely
+  max_probability: 0.80  # Don't bet on outcomes >80% likely (odds too low)
+
+odds_constraints:
+  min_acceptable_odds: 1.50
+  max_acceptable_odds: 5.00  # Avoid long shots
+  min_liquidity: 1000.0  # Minimum market liquidity (if using Betfair)
+
+confidence_filters:
+  min_confidence: 0.70  # Only bet when model confidence >70%
+  require_model_agreement: true  # Multiple models must agree
+  min_data_quality: 0.80  # Require 80% complete data
+
+markets:
+  enabled:
+    - "over_under_2_5"
+    - "btts"
+    - "total_corners"
+  
+  # Market-specific settings
+  over_under_2_5:
+    enabled: true
+    min_edge: 0.05
+    
+  btts:
+    enabled: true
+    min_edge: 0.06
+    
+  total_corners:
+    enabled: true
+    min_edge: 0.08  # Higher edge required (more variance)
+    
+  match_result:
+    enabled: false  # Disable 1X2 for now (lower edge)
+
+paper_trading:
+  enabled: true  # Start with paper trading
+  duration_days: 14  # Run for 2 weeks before going live
+
+alerts:
+  email_enabled: false
+  email_address: "your_email@example.com"
+  slack_enabled: false
+  slack_webhook: "your_slack_webhook_url"
+  alert_on_bet: true
+  alert_on_win: true
+  alert_on_loss: false  # Don't alert on every loss
+  daily_summary: true

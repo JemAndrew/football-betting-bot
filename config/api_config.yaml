@@ -1,0 +1,45 @@
+# API Configuration
+# Contains API endpoints, rate limits, and authentication settings
+
+football_data:
+  base_url: "https://api.football-data.org/v4"
+  api_key_env: "FOOTBALL_DATA_API_KEY"  # Read from environment
+  rate_limit: 10  # requests per minute (free tier)
+  timeout: 30  # seconds
+  retry_attempts: 3
+  retry_delay: 5  # seconds
+
+odds_api:
+  base_url: "https://api.the-odds-api.com/v4"
+  api_key_env: "ODDS_API_KEY"  # Read from environment
+  rate_limit: 60  # requests per minute
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 5
+  markets:
+    - "h2h"  # Match result (1X2)
+    - "totals"  # Over/Under goals
+    - "btts"  # Both teams to score
+
+sportmonks:
+  base_url: "https://api.sportmonks.com/v3/football"
+  api_key_env: "SPORTMONKS_API_KEY"
+  rate_limit: 3000  # Premium tier
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 2
+  enabled: false  # Set to true if you have access
+
+# Betfair API (optional - for live betting)
+betfair:
+  base_url: "https://api.betfair.com/exchange"
+  app_key_env: "BETFAIR_APP_KEY"
+  enabled: false  # Set to true if you want live betting
+  cert_path: "betfair_certs/"
+  timeout: 30
+
+# Cache settings
+cache:
+  enabled: true
+  ttl: 3600  # Time to live in seconds (1 hour)
+  directory: "data/cache"

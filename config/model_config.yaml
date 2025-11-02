@@ -1,0 +1,30 @@
+# Model Configuration
+# Hyperparameters for ML models (Phase 6)
+# Leave empty for now - will be filled during Phase 6 (ML Enhancement)
+
+# This file is not needed until Phase 6
+# For now, simple statistical models (Poisson, ELO) don't need config
+
+# ===== PLACEHOLDER FOR PHASE 6 =====
+
+# xgboost_corners:
+#   objective: "reg:squarederror"
+#   max_depth: 6
+#   learning_rate: 0.05
+#   n_estimators: 500
+#   subsample: 0.8
+#   colsample_bytree: 0.8
+#   min_child_weight: 3
+#   gamma: 0.1
+#
+# xgboost_cards:
+#   objective: "reg:squarederror"
+#   max_depth: 5
+#   learning_rate: 0.05
+#   n_estimators: 400
+#
+# ensemble:
+#   method: "weighted_average"
+#   weights:
+#     simple: 0.4
+#     xgboost: 0.6

@@ -25,7 +25,7 @@ pytest-cov==4.1.0
 loguru==0.7.2
 
 # Jupyter for analysis
-jupyter==1.0.0
+
 matplotlib==3.8.2
 seaborn==0.13.0
 

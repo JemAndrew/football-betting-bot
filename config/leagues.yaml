@@ -1,0 +1,146 @@
+# Leagues Configuration
+# Define which leagues to track and bet on
+
+# Start with 3-5 top leagues for best data quality
+# Add more once you're profitable
+
+PL:  # Premier League
+  enabled: true
+  name: "Premier League"
+  country: "England"
+  football_data_id: 2021
+  priority: 1  # Highest priority (best data)
+  
+  # League statistics (used as defaults/priors)
+  avg_goals: 2.82
+  avg_corners: 10.8
+  avg_cards: 4.2
+  home_advantage: 0.35  # Goals
+  btts_percentage: 0.53  # ~53% of matches are BTTS
+  
+  # Data quality
+  has_corners_data: true
+  has_cards_data: true
+  has_referee_data: true
+  has_xg_data: false
+  
+PD:  # La Liga
+  enabled: true
+  name: "La Liga"
+  country: "Spain"
+  football_data_id: 2014
+  priority: 2
+  
+  avg_goals: 2.68
+  avg_corners: 9.5
+  avg_cards: 5.1  # Higher than PL
+  home_advantage: 0.32
+  btts_percentage: 0.49
+  
+  has_corners_data: true
+  has_cards_data: true
+  has_referee_data: true
+  has_xg_data: false
+
+BL1:  # Bundesliga
+  enabled: true
+  name: "Bundesliga"
+  country: "Germany"
+  football_data_id: 2002
+  priority: 2
+  
+  avg_goals: 3.15  # Highest scoring league
+  avg_corners: 11.2
+  avg_cards: 3.8  # Lower than other leagues
+  home_advantage: 0.30
+  btts_percentage: 0.58  # Highest BTTS rate
+  
+  has_corners_data: true
+  has_cards_data: true
+  has_referee_data: true
+  has_xg_data: false
+
+SA:  # Serie A
+  enabled: false  # Disable initially, add later
+  name: "Serie A"
+  country: "Italy"
+  football_data_id: 2019
+  priority: 3
+  
+  avg_goals: 2.95
+  avg_corners: 9.8
+  avg_cards: 4.8
+  home_advantage: 0.28
+  btts_percentage: 0.47  # Lower BTTS rate
+  
+  has_corners_data: true
+  has_cards_data: true
+  has_referee_data: true
+  has_xg_data: false
+
+FL1:  # Ligue 1
+  enabled: false  # Disable initially
+  name: "Ligue 1"
+  country: "France"
+  football_data_id: 2015
+  priority: 3
+  
+  avg_goals: 2.71
+  avg_corners: 9.2
+  avg_cards: 4.5
+  home_advantage: 0.31
+  btts_percentage: 0.51
+  
+  has_corners_data: true
+  has_cards_data: true
+  has_referee_data: true
+  has_xg_data: false
+
+ELC:  # Championship
+  enabled: false  # Only add if you have good data
+  name: "Championship"
+  country: "England"
+  football_data_id: 2016
+  priority: 4
+  
+  avg_goals: 2.65
+  avg_corners: 10.5
+  avg_cards: 4.0
+  home_advantage: 0.38  # Stronger home advantage in lower leagues
+  btts_percentage: 0.52
+  
+  has_corners_data: false  # Often harder to get data
+  has_cards_data: false
+  has_referee_data: false
+  has_xg_data: false
+
+# League groups for analysis
+league_groups:
+  top_5:
+    - "PL"
+    - "PD"
+    - "BL1"
+    - "SA"
+    - "FL1"
+  
+  high_scoring:
+    - "BL1"  # Bundesliga has most goals
+    - "SA"
+  
+  high_btts:
+    - "BL1"
+    - "PL"
+  
+  high_cards:
+    - "PD"
+    - "SA"
+
+# Season dates (approximate)
+season:
+  start_month: 8  # August
+  end_month: 5    # May
+  winter_break:
+    enabled: false  # Only for some leagues
+    leagues: ["BL1"]  # Bundesliga has winter break
+    start_date: "12-20"
+    end_date: "01-15"
