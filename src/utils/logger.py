@@ -57,7 +57,7 @@ class BettingLogger:
         self._setup_file_loggers()
     
     def _create_log_directories(self):
-        """Create log directory structure."""
+        # Create log directory structure.
         directories = [
             self.log_dir,
             self.log_dir / "api",
@@ -71,7 +71,7 @@ class BettingLogger:
             directory.mkdir(parents=True, exist_ok=True)
     
     def _setup_console_logger(self):
-        """Set up coloured console output."""
+        # Set up coloured console output.
         if self.console_output:
             logger.add(
                 sys.stdout,
@@ -81,7 +81,7 @@ class BettingLogger:
             )
     
     def _setup_file_loggers(self):
-        """Set up file-based logging with rotation."""
+        # Set up file-based logging with rotation.
         # Main application log
         logger.add(
             self.log_dir / "app.log",

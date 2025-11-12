@@ -8,25 +8,6 @@ Ensemble methods:
 2. Stacking - Use one model's predictions as features for another
 3. Voting - Take majority vote from multiple models
 
-Why ensembles work:
-- Different models make different types of errors
-- Averaging reduces variance
-- Usually more robust than any single model
-
-This is Phase 6 stuff - only use if simple models work well first!
-
-Usage:
-    from src.models.ensemble import EnsembleModel
-    from src.models.goals import BTTSModel, OverUnderModel
-    
-    # Create ensemble
-    ensemble = EnsembleModel(
-        models=[BTTSModel(), OverUnderModel()],
-        weights=[0.6, 0.4]  # Weight first model more
-    )
-    
-    # Get combined prediction
-    prediction = ensemble.predict(home_id=1, away_id=2, date='2024-01-15')
 """
 
 from typing import Dict, List, Any, Optional
@@ -40,12 +21,12 @@ logger = logging.getLogger(__name__)
 
 
 class EnsembleModel(BaseModel):
-    """
-    Combines multiple models into a single ensemble prediction.
     
-    Usually performs better than any individual model by reducing variance
-    and combining different perspectives.
-    """
+    # Combines multiple models into a single ensemble prediction.
+    
+    # Usually performs better than any individual model by  reducing variance
+    # and combining different perspectives.
+    
     
     def __init__(
         self,
